@@ -1,0 +1,95 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>畅聊在线聊天室</title>
+		<link rel="stylesheet" type="text/css"
+			href="ext/resources/css/ext-all.css" />
+		<script type="text/javascript" src="ext/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="ext/ext-all.js"></script>
+		<script type="text/javascript" src="ext/ext-lang-zh_CN.js"></script>
+
+		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="js/validation_ext.js"></script>
+		<script type="text/javascript" src="js/register.js"></script>
+
+		<script type='text/javascript' src='/graduationPrj/dwr/engine.js'></script>
+		<script type='text/javascript' src='/graduationPrj/dwr/util.js'></script>
+		<script type='text/javascript'
+			src='/graduationPrj/dwr/interface/PublicChatJS.js'></script>
+		<script type="text/javascript" src="js/cookie.js"></script>
+		<script type="text/javascript" src="js/FileUploadField.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/file-upload.css" />
+
+		<style type="text/css">
+html,body {
+	background: #3d71b8 url(./images/desktop.jpg);
+	font: normal 12px tahoma, arial, verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	overflow: hidden;
+	height: 100%;
+}
+
+#login-left {
+	float: left;
+	border-right: 1px dashed black;
+	margin: 5px;
+}
+
+#login-center {
+	float: left;
+	padding-left: 10px;
+	padding-top: 15px;
+}
+
+#login-right {
+	float: left
+}
+
+.user {
+	background: url(images/user.gif) no-repeat 1px 2px;
+}
+
+.key {
+	background: url(images/key.gif) no-repeat 1px 2px;
+}
+
+.user-info {
+	background-image: url(images/userinfo.gif) !important;
+}
+</style>
+
+	</head>
+
+	<body onload="clearCookie()">
+
+		<div id="center-zone"
+			style="text-align: center; float: center; margin-left: 400px; margin-top: 200px; width: 210px;"
+			onmouseover="this.style.cursor='pointer';"
+			onclick="javascript:reload();">
+			<img src="images/png-0441.gif" title="点我一下!">
+			<br>
+			欢迎您的使用!
+		</div>
+
+		<div id="hello-win" class="x-hidden">
+			<div class="x-window-header">
+				畅聊在线实时聊天系统
+			</div>
+			<div id="hello-tabs">
+				<img src="images/banner-1.jpg" />
+			</div>
+			<div id='loginInfo' style='color: red; padding-left: 120px;'>
+			<br>
+				没有账号请点击这里：
+				<a href="#" onclick="initRg()">新用户注册</a>
+			</div>
+		</div>
+
+		<div id="registerWinDiv">
+
+		</div>
+	</body>
+</html>

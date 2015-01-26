@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+	<typeAlias alias="user" type="com.yunfei.pojo.User" />
+	<typeAlias alias="userBean" type="com.yunfei.pojo.UserBean" />
+
+	<parameterMap class="user" id="userParam">
+		<parameter property="username" />
+		<parameter property="password" />
+	</parameterMap>
+	
+	<parameterMap class="userBean" id="userBeanParam">
+		<parameter property="username" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="password" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="sex" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="email" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="realName" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="nickName" javaType="string" jdbcType="VARCHAR" />
+		<parameter property="age" javaType="integer" jdbcType="INTEGER" />
+		<parameter property="website" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="phone" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="qq" javaType="string" jdbcType="VARCHAR"/>
+		<parameter property="description" javaType="string" jdbcType="VARCHAR"/>
+	</parameterMap>
+	
+	<resultMap class="userBean" id="userBeanResult">
+		<result property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="sex" column="sex" />
+		<result property="email" column="email" />
+		<result property="realName" column="realName" />
+		<result property="nickName" column="nickName" />
+		<result property="age" column="age" />
+		<result property="website" column="website" />
+		<result property="phone" column="phone" />
+		<result property="qq" column="qq" />
+		<result property="description" column="description" />
+	</resultMap>
+	
+	<insert id="register" parameterMap="userBeanParam">
+		<![CDATA[
+			INSERT INTO users 
+						(username,password,sex,email,realName,nickName,age,website,phone,qq,description) 
+				 VALUES (?,?,?,?,?,?,?,?,?,?,?)
+		]]>
+		<selectKey resultClass="int">
+			<![CDATA[
+				SELECT @@IDENTITY AS ID
+			]]>
+		</selectKey>
+	</insert>
+
+	<resultMap class="user" id="userResult">
+		<result property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+	</resultMap>
+
+	<select id="login" parameterMap="userParam"
+		resultMap="userResult">
+		<![CDATA[
+		SELECT id,username,password FROM users
+		WHERE username = ? and password = ?;
+		]]>
+	</select>
+	
+	<select id="getUserBeanFromUsername" parameterClass="String"
+		resultMap="userBeanResult">
+		<![CDATA[
+		select * from
+		users WHERE username = #username#;
+		]]>
+	</select>
+
+	<select id="getUserFromUsername" parameterClass="String"
+		resultClass="user">
+		<![CDATA[
+		select id as id, username as username, password as password from
+		users WHERE username = #username#;
+		]]>
+	</select>
+	
+</sqlMap>
